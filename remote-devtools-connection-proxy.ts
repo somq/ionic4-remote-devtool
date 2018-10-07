@@ -23,7 +23,8 @@ export class RemoteDevToolsConnectionProxy implements ReduxDevtoolsExtensionConn
   }
 
   send(action: any, state: any): any {
+    // Was commented has 'Not Called' but it's appear 
+    // we finally need this to send back responses to Redux DevTools
     this.remotedev.send(action, state);
-    // Never called
   }
 }
