@@ -21,6 +21,11 @@ mkdir MY_APP/devtool-hack
 cp ngrx-devtool-hack.ts MY_APP/devtool-hack
 cp remote-devtools-connection-proxy.ts MY_APP/devtool-hack
 ```
+Install [remotedev](https://github.com/zalmoxisus/remotedev) lib
+
+```sh
+npm install --save-dev remotedev
+```
 
 Add this in app.module.ts to override `ReduxDevtoolsExtension` RemoteDevToolsProxy class
 
