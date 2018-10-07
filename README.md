@@ -2,14 +2,19 @@
 
 ## how does it work?
 
-The ionic app runs on the device, we proxy `ReduxDevtoolsExtension` to our server, and we connect Redux DevTools to our server.
+The ionic app runs on the device, we proxy `ReduxDevtoolsExtension` to our server, and we connect `Redux DevTools` to our server.
 
+```
+(1) ionic on-device app  <--> (2) ws server <--> (3) Redux DevTools
+```
 
 ## How to setup Redux-DevTools to connect remotely to a ionic v4 app running on device
 
-### The client (app running on the phone)
+### 1) The client (app running on the phone)
 
 We need to override `ReduxDevtoolsExtension` module connection to make it connect to our server and *proxy* sends and *receives*
+
+Copy the file containing classes implementing `ReduxDevtoolsExtension` to your appp
 
 ```sh
 mkdir MY_APP/devtool-hack
@@ -17,7 +22,7 @@ cp ngrx-devtool-hack.ts MY_APP/devtool-hack
 cp remote-devtools-connection-proxy.ts MY_APP/devtool-hack
 ```
 
-add this in app.module.ts to override RemoteDevToolsProxy
+Add this in app.module.ts to override `ReduxDevtoolsExtension` RemoteDevToolsProxy class
 
 ```ts
 import { RemoteDevToolsProxy } from '../dev/ngrx-devtool-hack';
@@ -38,25 +43,25 @@ if (!window['devToolsExtension'] && !window['__REDUX_DEVTOOLS_EXTENSION__']) {
 
 ```
 
-### The server (proxy)
+### 2) The server (proxy)
 
-> Note: uws does not compile properly on windows, to avoid using a vm we just use a forked version of remotedev-server allwoing us to pass `--wsEngine=ws`
-> A PR has been opened on the remotedev-server rep, in the meanwhile we do this using a local repo
+> Note: uws does not compile properly on windows (and is deprecated), to avoid using a vm we just use a forked version of remotedev-server allowing us to pass `--wsEngine=ws`
+> A [PR has been opened](https://github.com/zalmoxisus/remotedev-server/pull/63) on the remotedev-server repo, in the meanwhile it's accepted, we are using a local repo.
 
 
-run the server
+#### Run the server
 
 ```sh
 git clone https://github.com/somq/remotedev-server.git && cd remotedev-server && npm i && node bin\remotedev.js --hostname=CHANGE_ME_BY_YOUR_MACHINE_IP --port=8000 --wsEngine=ws --logLevel=3
 ```
 
-### Redux DevTool
+### 3) Redux DevTool
 
-- Launch a DevTool instance
-- Go to settings
-- Tick Use custom (local) server
-  - set Host name to YOUR_MACHINE_IP
-  - set Port to 8000
+- Launch a **Redux DevTool** instance
+- Go to *settings*
+- Tick *Use custom (local) server*
+  - set *Host name* to YOUR_MACHINE_IP
+  - set *Port* to 8000
 
 
 ### Troubleshoot
