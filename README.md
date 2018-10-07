@@ -1,4 +1,4 @@
-# Redux DevTool with a ionic v4 app
+# How to use Redux DevTool with a ionic v4 app on device
 
 ## how does it work?
 
