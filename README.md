@@ -69,7 +69,7 @@ git clone https://github.com/somq/remotedev-server.git && cd remotedev-server &&
 socketcluster-client might complains that `global is undefined`
 
 It's because, by default, angular 6 [does not load pollyfills anymore](https://github.com/angular/angular-cli/issues/9827#issuecomment-369578814).
-Either load intl polyfill or simply add `window.global = window` on top of `node_modules/socketcluster-client/lib/sctransport.js`
+Either load polyfills or simply add `window.global = window` on top of `node_modules/socketcluster-client/lib/sctransport.js`
 
 > Note: this is an ugly solution but I don't want to spend any more time on this one. Feel free to add a PR if you find a clean way to do this.
 > socketcluster-client issue: https://github.com/SocketCluster/socketcluster-client/issues/118 
