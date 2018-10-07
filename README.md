@@ -73,3 +73,12 @@ Either load intl polyfill or simply add `window.global = window` on top of `node
 
 > Note: this is an ugly solution but I don't want to spend any more time on this one. Feel free to add a PR if you find a clean way to do this.
 > socketcluster-client issue: https://github.com/SocketCluster/socketcluster-client/issues/118 
+
+
+### Credits
+
+Credits goes to [@zbarbuto](https://medium.com/@zbarbuto) and initially to [rob3c](https://gist.github.com/rob3c)
+
+
+A good read:
+https://medium.com/nextfaze/remote-debugging-ngrx-store-with-ionic-74e367316193
