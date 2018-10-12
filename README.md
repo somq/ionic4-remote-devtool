@@ -1,5 +1,9 @@
 # How to use Redux DevTool with a ionic v4 app on device
 
+> Note:   
+> This explanation below explains everything using ngrx as exampe but it works exactly the same way with ngxs.  
+> The only difference is the interface to implement (`NgxsDevtoolsExtension` instead of `ReduxDevtoolsExtensionConnection `)   
+> You can find ngxs template files in the repo.
 ## how does it work?
 
 The ionic app runs on the device, we proxy `ReduxDevtoolsExtension` to our server, and we connect `Redux DevTools` to our server.
