@@ -21,7 +21,7 @@ export class RemoteDevToolsProxy implements NgxsDevtoolsExtension {
   }
 
   init() {}
-  subscribe() {}
+  subscribe(listener: (change: any) => void): any {}
 
   connect(options: {
     shouldStringify?: boolean;
